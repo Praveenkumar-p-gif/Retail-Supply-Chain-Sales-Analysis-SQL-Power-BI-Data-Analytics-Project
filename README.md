@@ -63,6 +63,9 @@ The following data preparation steps were performed:
 
 Example SQL transformation:
 
+
+Identify how sales change over time.
+
 ```sql
 ALTER TABLE superstore_sales
 RENAME COLUMN `Order ID` TO order_id,
