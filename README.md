@@ -1,70 +1,79 @@
-# Retail Supply Chain & Sales Analysis Dashboard
+# 🛒 Retail Supply Chain & Sales Analysis Dashboard
 
-## Project Overview
-
-This project analyzes retail store sales data to uncover business insights and visualize key performance metrics.  
-
-The goal of this project is to demonstrate **data cleaning, SQL analysis, and Power BI dashboard development** to help businesses understand sales trends, profitability, customer behavior, and product performance.
-
-The final result is an **interactive Power BI dashboard** that enables users to explore sales performance across regions, categories, and time.
-
+An end-to-end **Data Analyst project** that analyzes retail store sales data using **SQL and Power BI** to uncover business insights such as sales trends, customer behavior, product performance, and the impact of discounts on profit.
 
 ---
 
-# Business Problem
+# 📊 Dashboard Preview
 
-Retail businesses generate large volumes of transaction data, but extracting insights from this data is challenging.
-
-This project answers key business questions such as:
-
-- How are sales trending month over month?
-- Which regions generate high sales but low profit?
-- Which products generate the most revenue?
-- Are discounts negatively affecting profitability?
-- Which customers are repeat buyers?
-- Which products generate high sales but low margins?
+![Dashboard](dashboard.png)
 
 ---
 
-# Tools & Technologies Used
+# 📌 Project Overview
 
-- **SQL (MySQL)** – Data cleaning & business analysis
-- **Power BI** – Interactive dashboard
-- **Excel / CSV** – Raw dataset
-- **GitHub** – Project documentation
+Retail businesses generate large amounts of transaction data every day.  
+This project analyzes retail sales data to identify key insights that help businesses improve profitability and decision-making.
+
+The project includes:
+
+• Data Cleaning using SQL  
+• Business Insights using SQL Queries  
+• Interactive Dashboard using Power BI  
 
 ---
 
-# Dataset
+# 🎯 Business Questions Solved
+
+This project answers important business questions:
+
+- What are the **monthly sales trends**?
+- Which **regions generate low profit**?
+- Which **products generate the most revenue**?
+- Are **discounts hurting profits**?
+- Who are the **repeat customers**?
+- Which **products have high sales but low profit**?
+
+---
+
+# 🛠 Tools & Technologies
+
+| Tool | Purpose |
+|-----|------|
+| SQL (MySQL) | Data cleaning & analysis |
+| Power BI | Dashboard visualization |
+| Excel / CSV | Dataset |
+| GitHub | Project documentation |
+
+---
+
+# 📂 Dataset
 
 The dataset contains retail store transaction data including:
 
 - Order ID
 - Order Date
-- Customer Information
-- Product Category
-- Sales
-- Profit
-- Discount
+- Customer Name
 - Region
-
-The data was first cleaned and transformed using SQL before building the dashboard.
+- Category
+- Product Name
+- Sales
+- Quantity
+- Discount
+- Profit
 
 ---
 
-# Data Cleaning (SQL)
+# 🧹 Data Cleaning
 
-The following data preparation steps were performed:
+Data cleaning steps performed using SQL:
 
-- Renamed columns for better readability
-- Converted date columns into proper date format
+- Renamed columns
+- Converted text dates to DATE format
 - Removed unnecessary columns
-- Structured the dataset for analysis
+- Structured dataset for analysis
 
-Example SQL transformation:
-
-
-Identify how sales change over time.
+Example:
 
 ```sql
 ALTER TABLE superstore_sales
@@ -73,10 +82,15 @@ RENAME COLUMN `Order Date` TO order_date,
 RENAME COLUMN `Product Name` TO product_name,
 RENAME COLUMN `Sales` TO sales,
 RENAME COLUMN `Profit` TO profit;
----
-Key Business Analysis (SQL)
-Month Over Month Sales Analysis
+```
 
+---
+
+# 📈 SQL Analysis
+
+## 1️⃣ Month Over Month Sales Analysis
+
+```sql
 SELECT
 EXTRACT(YEAR FROM order_date) AS year,
 EXTRACT(MONTH FROM order_date) AS month,
@@ -84,53 +98,118 @@ ROUND(SUM(sales),2) AS total_sales
 FROM superstore_sales
 GROUP BY year, month
 ORDER BY year, month;
-Identify how sales change over time.
+```
 
-Region Performance
+---
 
-Identify regions generating low profit.
+## 2️⃣ Region Performance
 
+```sql
 SELECT 
 region,
-SUM(sales) AS total_sales,
-SUM(profit) AS total_profit
+ROUND(SUM(sales),2) AS total_sales,
+ROUND(SUM(profit),2) AS total_profit
 FROM superstore_sales
 GROUP BY region
 ORDER BY total_profit ASC;
+```
 
-Discount Impact on Profit
+---
 
-SELECT 
-discount,
-SUM(sales) AS total_sales,
-SUM(profit) AS total_profit
-FROM superstore_sales
-GROUP BY discount;
+## 3️⃣ Top 5 Products by Revenue
 
-Top 5 Products by Revenue
-
+```sql
 SELECT 
 product_name,
-SUM(sales) AS total_sales
+ROUND(SUM(sales),2) AS total_sales
 FROM superstore_sales
 GROUP BY product_name
 ORDER BY total_sales DESC
 LIMIT 5;
-
-
-💡 **Tip (Important for getting Data Analyst jobs):**
-
-Add this project to your resume like this:
-
-**Retail Sales Analysis Dashboard | SQL, Power BI**  
-• Built an interactive dashboard analyzing **2M+ sales transactions**  
-• Identified **high-discount impact on profit margins**  
-• Discovered **top 20% products generate 70% revenue**
+```
 
 ---
 
-If you want, I can also give you:
+## 4️⃣ Discount Impact on Profit
 
-✅ **A professional GitHub portfolio format (top 1% Data Analysts use)**  
-✅ **3 more SQL + Power BI projects recruiters love**  
-✅ **LinkedIn post template to get recruiter attention**.
+```sql
+SELECT 
+discount,
+ROUND(SUM(sales),2) AS total_sales,
+ROUND(SUM(profit),2) AS total_profit
+FROM superstore_sales
+GROUP BY discount
+ORDER BY total_profit ASC;
+```
+
+---
+
+# 📊 Dashboard Features
+
+The Power BI dashboard provides:
+
+✔ Total Sales  
+✔ Total Profit  
+✔ Profit Margin  
+✔ Total Orders  
+✔ Repeat Customers  
+✔ Monthly Sales Trends  
+✔ Top Revenue Products  
+✔ Sales vs Profit Analysis  
+✔ Discount Impact Analysis  
+
+---
+
+# 🔍 Key Insights
+
+Important insights discovered:
+
+• Sales show **seasonal fluctuations**  
+• **High discounts significantly reduce profit margins**  
+• **Top products generate majority of revenue**  
+• Some products deliver **high sales but very low profit**  
+• **Repeat customers contribute major revenue**
+
+---
+
+# 📁 Project Structure
+
+```
+Retail-Sales-Analysis
+│
+├── data
+│   └── retail_store_data.csv
+│
+├── sql
+│   └── retail_sales_analysis.sql
+│
+├── dashboard
+│   └── retail_sales_dashboard.pbix
+│
+├── images
+│   └── dashboard.png
+│
+└── README.md
+```
+
+---
+
+# 🚀 Skills Demonstrated
+
+- Data Cleaning
+- SQL Window Functions
+- Data Analysis
+- Business Intelligence
+- Dashboard Design
+- Data Storytelling
+
+---
+
+# 👨‍💻 Author
+
+**Praveen Kumar**
+
+Aspiring Data Analyst  
+Skills: **SQL | Power BI | Python | Excel**
+
+---
