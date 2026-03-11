@@ -6,7 +6,7 @@ An end-to-end **Data Analyst project** that analyzes retail store sales data usi
 
 # 📊 Dashboard Preview
 
-![Dashboard](dashboard.png)
+![Dashboard](https://github.com/Praveenkumar-p-gif/Retail-Supply-Chain-Sales-Analysis-SQL-Power-BI-Data-Analytics-Project/blob/main/Screenshot%202026-03-10%20103442.png)
 
 ---
 
