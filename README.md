@@ -66,7 +66,7 @@ Example SQL transformation:
 
 Identify how sales change over time.
 
-
+```sql
 ALTER TABLE superstore_sales
 RENAME COLUMN `Order ID` TO order_id,
 RENAME COLUMN `Order Date` TO order_date,
